@@ -1,0 +1,12 @@
+steps:
+  # build the docker image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "--no-cache", "-t", "us-central1-docker.pkg.dev/coopsclass/armat3/test:latest", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    # push the built image to the Artifact Registry
+
+    args: ["push", "us-central1-docker.pkg.dev/coopsclass-65/armat3/test:latest"]
+images:
+  - "us-central1-docker.pkg.dev/coopsclass-65/armat2/test:latest"
+options:
+  logging: CLOUD_LOGGING_ONLY
